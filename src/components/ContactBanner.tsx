@@ -12,7 +12,7 @@ const ContactBanner = () => {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-2xl md:text-3xl font-extrabold text-foreground mb-4">
+          <h2 className="text-2xl md:text-3xl font-heading font-extrabold text-foreground mb-4">
             Ready to innovate? Let's build what's next — together.
           </h2>
           <p className="text-muted-foreground mb-8">
@@ -20,7 +20,7 @@ const ContactBanner = () => {
           </p>
           <Link
             to="/contact"
-            className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-3.5 text-sm font-medium rounded-full hover:bg-accent/90 transition-colors"
+            className="inline-flex items-center gap-3 bg-accent text-accent-foreground px-8 py-3.5 text-sm font-bold rounded-xl hover:bg-accent/90 transition-all hover:-translate-y-0.5 shadow-[0_10px_18px_rgba(214,169,53,0.2)]"
           >
             Contact Us <ArrowRight size={16} />
           </Link>

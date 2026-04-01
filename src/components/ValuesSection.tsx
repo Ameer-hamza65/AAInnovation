@@ -35,8 +35,10 @@ const ValuesSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="text-primary text-xs tracking-[0.3em] uppercase mb-4 font-medium">What Drives Us</p>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Mission, Vision & Values</h2>
+          <div className="eyebrow-badge mx-auto mb-4">
+            <span>What Drives Us</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-foreground">Mission, Vision & Values</h2>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-6 mb-16">
@@ -47,16 +49,16 @@ const ValuesSection = () => {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
               viewport={{ once: true }}
-              className="bg-background p-8 border border-border rounded-lg"
+              className="bg-white p-8 border border-border rounded-[22px] hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-md"
             >
-              <h3 className="text-primary font-semibold text-sm tracking-wide uppercase mb-4">{card.label}</h3>
+              <h3 className="text-gold-deep font-heading font-semibold text-sm tracking-wide uppercase mb-4">{card.label}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">{card.text}</p>
             </motion.div>
           ))}
         </div>
 
         <div className="text-center mb-8">
-          <h3 className="text-xl font-bold text-primary">Core Values</h3>
+          <h3 className="text-xl font-heading font-bold text-primary">Core Values</h3>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
           {values.map((v, i) => (
@@ -68,10 +70,10 @@ const ValuesSection = () => {
               viewport={{ once: true }}
               className="text-center p-6"
             >
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                <v.icon size={24} className="text-primary" />
+              <div className="w-12 h-12 rounded-[14px] flex items-center justify-center mx-auto mb-4" style={{ background: "linear-gradient(135deg, hsl(43 90% 90%), hsl(43 100% 95%))", border: "1px solid hsl(43 70% 43% / 0.18)" }}>
+                <v.icon size={24} className="text-gold-deep" />
               </div>
-              <h4 className="text-foreground font-semibold text-sm mb-2">{v.title}</h4>
+              <h4 className="text-foreground font-heading font-semibold text-sm mb-2">{v.title}</h4>
               <p className="text-muted-foreground text-xs leading-relaxed">{v.desc}</p>
             </motion.div>
           ))}

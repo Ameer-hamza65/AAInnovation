@@ -10,7 +10,7 @@ import WhyUsSection from "@/components/WhyUsSection";
 import ContactSection from "@/components/ContactSection";
 import ContactFormModal from "@/components/ContactFormModal";
 import Footer from "@/components/Footer";
-import heroBg from "@/assets/hero-bg.jpg";
+import goldWaveBg from "@/assets/gold-wave-background.png";
 
 const Index = () => {
   const location = useLocation();
@@ -26,14 +26,14 @@ const Index = () => {
   }, [location]);
 
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen bg-gradient-to-b from-white to-secondary">
+      {/* Gold wave edge highlights */}
       <div
-        className="fixed inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBg})` }}
+        className="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-[0.15] pointer-events-none gold-wave-bg"
+        style={{ backgroundImage: `url(${goldWaveBg})` }}
       />
-      <div className="fixed inset-0 bg-background/50" />
       <div className="relative z-10">
-        <Navbar onContactClick={() => setContactModalOpen(true)} />
+        <Navbar />
         <HeroSection onContactClick={() => setContactModalOpen(true)} />
         <AboutSection />
         <ServicesSection />
@@ -48,4 +48,4 @@ const Index = () => {
   );
 };
 
-export default Index; 
+export default Index;

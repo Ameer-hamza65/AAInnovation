@@ -29,7 +29,7 @@ const ContactFormModal = ({ open, onOpenChange }: ContactFormModalProps) => {
     setIsSubmitting(true);
     try {
       const formData = new FormData(e.currentTarget);
-      formData.append("access_key", "3ca66874-abca-4f25-888e-a6b5e69fe2fd");
+      formData.append("access_key", "792614a7-30bf-4834-bd63-f8113a8b3017");
       formData.append("subject", "New Contact Form Submission — AA Innovation");
       formData.append("from_name", "AA Innovation Website");
 
@@ -53,20 +53,18 @@ const ContactFormModal = ({ open, onOpenChange }: ContactFormModalProps) => {
   return (
     <DialogPrimitive.Root open={open} onOpenChange={onOpenChange}>
       <DialogPrimitive.Portal>
-        <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-black/30 backdrop-blur-[2px] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
-        <DialogPrimitive.Content className="fixed right-0 top-0 z-50 h-full w-[380px] max-w-[95vw] bg-secondary/90 backdrop-blur-xl border-l border-white/10 shadow-[-10px_0_40px_-10px_hsl(var(--primary)/0.15)] duration-300 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right focus:outline-none flex flex-col">
+        <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-black/20 backdrop-blur-[2px] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
+        <DialogPrimitive.Content className="fixed right-0 top-0 z-50 h-full w-[380px] max-w-[95vw] bg-white border-l border-border shadow-[-10px_0_40px_-10px_rgba(14,26,79,0.12)] duration-300 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right focus:outline-none flex flex-col">
 
-          {/* Close button */}
-          <DialogPrimitive.Close className="absolute right-3 top-3 z-10 flex h-7 w-7 items-center justify-center rounded-full border border-white/10 bg-white/5 text-muted-foreground hover:text-foreground hover:bg-white/10 transition-all">
+          <DialogPrimitive.Close className="absolute right-3 top-3 z-10 flex h-7 w-7 items-center justify-center rounded-full border border-border bg-secondary text-muted-foreground hover:text-foreground hover:bg-muted transition-all">
             <X className="h-3.5 w-3.5" />
             <span className="sr-only">Close</span>
           </DialogPrimitive.Close>
 
           <div className="flex-1 flex flex-col px-7 py-8 overflow-hidden">
-            {/* Header */}
             <div className="mb-6">
-              <DialogPrimitive.Title className="flex items-center gap-2 text-lg font-bold text-foreground mb-1.5">
-                <Sparkles className="h-5 w-5 text-primary" />
+              <DialogPrimitive.Title className="flex items-center gap-2 text-lg font-heading font-bold text-foreground mb-1.5">
+                <Sparkles className="h-5 w-5 text-gold-dim" />
                 Let's Build Together
               </DialogPrimitive.Title>
               <DialogPrimitive.Description className="text-xs text-muted-foreground leading-relaxed">
@@ -75,25 +73,21 @@ const ContactFormModal = ({ open, onOpenChange }: ContactFormModalProps) => {
             </div>
 
             <form onSubmit={handleSubmit} className="flex-1 flex flex-col gap-4">
-              {/* Full Name */}
               <div>
                 <label className="block text-[10px] font-bold tracking-[0.12em] uppercase text-foreground mb-1.5">Full Name</label>
                 <input name="full_name" type="text" required placeholder="Jane Doe" className="form-input-style py-2.5 px-3.5 text-sm" />
               </div>
 
-              {/* Email */}
               <div>
                 <label className="block text-[10px] font-bold tracking-[0.12em] uppercase text-foreground mb-1.5">Email</label>
                 <input name="email" type="email" required placeholder="jane.doe@company.com" className="form-input-style py-2.5 px-3.5 text-sm" />
               </div>
 
-              {/* Message */}
               <div>
                 <label className="block text-[10px] font-bold tracking-[0.12em] uppercase text-foreground mb-1.5">Message</label>
                 <textarea name="message" required rows={3} maxLength={2000} placeholder="Tell us about your project, challenge, or question..." className="form-input-style py-2.5 px-3.5 text-sm resize-none" />
               </div>
 
-              {/* Company + Phone side by side */}
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="block text-[10px] font-bold tracking-[0.12em] uppercase text-foreground mb-1.5">Company</label>
@@ -105,11 +99,10 @@ const ContactFormModal = ({ open, onOpenChange }: ContactFormModalProps) => {
                 </div>
               </div>
 
-              {/* Service Interest */}
               <div>
                 <label className="block text-[10px] font-bold tracking-[0.12em] uppercase text-foreground mb-1.5">Service Interest</label>
                 <Select name="service_interest">
-                  <SelectTrigger className="w-full px-3.5 py-2.5 h-auto border border-white/10 bg-white/[0.07] backdrop-blur-sm text-sm text-muted-foreground focus:border-primary/40">
+                  <SelectTrigger className="w-full px-3.5 py-2.5 h-auto border border-border bg-white text-sm text-muted-foreground focus:border-primary/40 rounded-lg">
                     <SelectValue placeholder="Select a service (optional)" />
                   </SelectTrigger>
                   <SelectContent>
@@ -120,12 +113,11 @@ const ContactFormModal = ({ open, onOpenChange }: ContactFormModalProps) => {
                 </Select>
               </div>
 
-              {/* Actions */}
               <div className="flex items-center gap-4 mt-auto pt-4">
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-2.5 text-sm font-semibold rounded-full hover:bg-primary/85 transition-colors disabled:opacity-50 shadow-[0_0_15px_-3px_hsl(var(--primary)/0.4)]"
+                  className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 py-2.5 text-sm font-bold rounded-xl hover:bg-accent/90 transition-all disabled:opacity-50 shadow-[0_10px_18px_rgba(214,169,53,0.2)]"
                 >
                   {isSubmitting ? "Sending..." : "Send Message"} <Send size={14} />
                 </button>

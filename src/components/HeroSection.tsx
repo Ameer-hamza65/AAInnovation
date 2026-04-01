@@ -13,24 +13,28 @@ const HeroSection = ({ onContactClick }: { onContactClick?: () => void } = {}) =
 
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-[72px]">
+      {/* Subtle gold radial glow on right */}
+      <div className="absolute right-[-10%] top-[-20%] w-[600px] h-[600px] rounded-full pointer-events-none animate-float" style={{ background: "radial-gradient(circle, rgba(249,204,92,0.18), transparent 70%)" }} />
+
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-24">
         <div className="max-w-3xl">
-          <motion.p
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="text-muted-foreground text-xs tracking-[0.3em] uppercase font-medium mb-8"
+            className="eyebrow-badge mb-8"
           >
-            Always Ahead.
-          </motion.p>
+            <span className="w-1.5 h-1.5 rounded-full bg-gold-deep" />
+            <span>Always Ahead</span>
+          </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-black text-foreground leading-[1.05] mb-8"
+            className="text-4xl md:text-6xl lg:text-7xl font-heading font-extrabold text-foreground leading-[1.05] mb-8"
           >
-            Always on the <em className="italic font-light">lookout</em>
+            Always on the <span className="text-primary">lookout</span>
             <br />for a better way
           </motion.h1>
 
@@ -49,14 +53,33 @@ const HeroSection = ({ onContactClick }: { onContactClick?: () => void } = {}) =
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
+            className="flex flex-wrap gap-4"
           >
-            <button
+            <motion.button
               onClick={scrollToContact}
-              className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-3.5 text-sm font-semibold rounded-full hover:bg-primary/90 transition-colors"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, delay: 0.4 }}
+              whileHover={{ scale: 1.03 }}
+              className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-3.5 text-sm font-bold rounded-xl hover:bg-primary/90 transition-all hover:-translate-y-0.5 shadow-[0_10px_18px_rgba(28,57,187,0.18)]"
             >
               Book a Free Strategy Call
               <ArrowRight size={16} />
-            </button>
+            </motion.button>
+            <motion.button
+              onClick={() => {
+                const el = document.querySelector("#services");
+                if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+              }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, delay: 0.5 }}
+              whileHover={{ scale: 1.03 }}
+              className="inline-flex items-center gap-3 bg-accent text-accent-foreground px-8 py-3.5 text-sm font-bold rounded-xl hover:bg-accent/90 transition-all hover:-translate-y-0.5 shadow-[0_10px_18px_rgba(214,169,53,0.2)]"
+            >
+              Explore Services
+              <ArrowRight size={16} />
+            </motion.button>
           </motion.div>
         </div>
       </div>

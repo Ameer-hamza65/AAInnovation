@@ -34,10 +34,12 @@ const PillarsSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="text-primary text-xs tracking-[0.3em] uppercase mb-4 font-medium">How We Deliver</p>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Four Pillars of Delivery</h2>
+          <div className="eyebrow-badge mx-auto mb-4">
+            <span>How We Deliver</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-foreground">Four Pillars of Delivery</h2>
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-            Everything AA Innovations does connects back to four core delivery pillars. They define who we are,
+            Everything AA Innovation does connects back to four core delivery pillars. They define who we are,
             how we work, and why organizations choose us over firms ten times our size.
           </p>
         </motion.div>
@@ -50,11 +52,11 @@ const PillarsSection = () => {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
               viewport={{ once: true }}
-              className="bg-secondary p-8 border border-border border-t-2 border-t-primary"
+              className="bg-white p-8 border border-border rounded-[22px] border-l-[5px] border-l-gold hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-md"
             >
-              <span className="text-primary text-3xl font-bold">{p.num}</span>
-              <h3 className="text-lg font-semibold text-foreground mt-4 mb-3">{p.title}</h3>
-              <p className="text-sterling text-sm leading-relaxed">{p.desc}</p>
+              <span className="text-gold-deep text-3xl font-heading font-bold">{p.num}</span>
+              <h3 className="text-lg font-heading font-semibold text-foreground mt-4 mb-3">{p.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">{p.desc}</p>
             </motion.div>
           ))}
         </div>

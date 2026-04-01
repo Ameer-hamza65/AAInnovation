@@ -20,30 +20,32 @@ const WhyUsSection = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <p className="text-primary text-xs tracking-[0.3em] uppercase mb-4 font-medium">The Difference</p>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Why AA Innovations</h2>
+          <div className="eyebrow-badge mx-auto mb-4">
+            <span>The Difference</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-foreground">Why AA Innovation</h2>
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
             Organizations choose us because we deliver more than technology — we deliver outcomes.
           </p>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="overflow-hidden border border-border rounded-lg"
+          className="overflow-hidden border border-border rounded-[18px] shadow-sm"
         >
-          <div className="grid grid-cols-2 bg-secondary">
-            <div className="p-4 font-semibold text-sm text-foreground">The AA Innovations Way</div>
-            <div className="p-4 font-semibold text-sm text-foreground border-l border-border">The Alternative</div>
+          <div className="grid grid-cols-2" style={{ background: "linear-gradient(180deg, #0E1A4F, #142872)" }}>
+            <div className="p-4 font-heading font-semibold text-sm text-gold">The AA Innovation Way</div>
+            <div className="p-4 font-heading font-semibold text-sm text-white/80 border-l border-white/10">The Alternative</div>
           </div>
           {rows.map((row, i) => (
             <div
               key={i}
-              className={`grid grid-cols-2 ${i % 2 === 0 ? "bg-card" : "bg-background"}`}
+              className={`grid grid-cols-2 ${i % 2 === 0 ? "bg-white" : "bg-secondary"}`}
             >
-              <div className="p-4 text-sm text-sterling font-medium">{row.us}</div>
+              <div className="p-4 text-sm text-foreground/80 font-medium">{row.us}</div>
               <div className="p-4 text-sm text-muted-foreground border-l border-border">{row.them}</div>
             </div>
           ))}

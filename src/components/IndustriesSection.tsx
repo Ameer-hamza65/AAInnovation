@@ -22,8 +22,10 @@ const IndustriesSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="text-primary text-xs tracking-[0.3em] uppercase mb-4 font-medium">Where We Operate</p>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Industries We Serve</h2>
+          <div className="eyebrow-badge mx-auto mb-4">
+            <span>Where We Operate</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-foreground">Industries We Serve</h2>
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
             Specialized capabilities across seven core industries, each led by sector veterans.
           </p>
@@ -33,16 +35,16 @@ const IndustriesSection = () => {
           {industries.map((ind, i) => (
             <motion.div
               key={ind.title}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.4, delay: i * 0.04 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
               viewport={{ once: true }}
-              className="bg-background p-6 border border-border rounded-lg hover:border-primary/50 transition-colors group"
+              className="bg-white p-6 border border-border rounded-[22px] hover:border-primary/30 hover:shadow-lg transition-all duration-300 group hover:-translate-y-1"
             >
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+              <div className="w-10 h-10 rounded-[14px] bg-secondary flex items-center justify-center mb-4 group-hover:bg-primary/10 transition-colors">
                 <ind.icon size={20} className="text-primary" />
               </div>
-              <h3 className="text-foreground font-semibold mb-2">{ind.title}</h3>
+              <h3 className="text-foreground font-heading font-semibold mb-2">{ind.title}</h3>
               <p className="text-muted-foreground text-sm mb-4">{ind.tagline}</p>
             </motion.div>
           ))}

@@ -13,7 +13,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-secondary border-t border-border py-16">
+    <footer className="border-t border-border py-16 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div className="md:col-span-1">
@@ -34,34 +34,34 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-foreground font-medium text-sm mb-4">Navigation</h4>
+            <h4 className="text-foreground font-heading font-bold text-sm mb-4">Navigation</h4>
             <ul className="space-y-3">
-              <li><Link to="/" className="text-muted-foreground text-sm hover:text-foreground transition-colors">Home</Link></li>
-              <li><button onClick={() => scrollTo("#about")} className="text-muted-foreground text-sm hover:text-foreground transition-colors">About Us</button></li>
-              <li><button onClick={() => scrollTo("#services")} className="text-muted-foreground text-sm hover:text-foreground transition-colors">Services</button></li>
-              <li><button onClick={() => scrollTo("#industries")} className="text-muted-foreground text-sm hover:text-foreground transition-colors">Industries</button></li>
-              <li><button onClick={() => scrollTo("#contact")} className="text-muted-foreground text-sm hover:text-foreground transition-colors">Contact Us</button></li>
-              <li><Link to="/faq" className="text-muted-foreground text-sm hover:text-foreground transition-colors">FAQ</Link></li>
+              <li><Link to="/" className="text-muted-foreground text-sm hover:text-primary transition-colors">Home</Link></li>
+              <li><button onClick={() => scrollTo("#about")} className="text-muted-foreground text-sm hover:text-primary transition-colors">About Us</button></li>
+              <li><button onClick={() => scrollTo("#services")} className="text-muted-foreground text-sm hover:text-primary transition-colors">Services</button></li>
+              <li><button onClick={() => scrollTo("#industries")} className="text-muted-foreground text-sm hover:text-primary transition-colors">Industries</button></li>
+              <li><button onClick={() => scrollTo("#contact")} className="text-muted-foreground text-sm hover:text-primary transition-colors">Contact Us</button></li>
+              <li><Link to="/faq" className="text-muted-foreground text-sm hover:text-primary transition-colors">FAQ</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-foreground font-medium text-sm mb-4">Services</h4>
+            <h4 className="text-foreground font-heading font-bold text-sm mb-4">Services</h4>
             <ul className="space-y-3">
-              <li><Link to="/services/ai-automation" className="text-muted-foreground text-sm hover:text-foreground transition-colors">AI & Automation</Link></li>
-              <li><Link to="/services/data-analytics" className="text-muted-foreground text-sm hover:text-foreground transition-colors">Data Analytics</Link></li>
-              <li><Link to="/services/cloud-solutions" className="text-muted-foreground text-sm hover:text-foreground transition-colors">Cloud Solutions</Link></li>
-              <li><Link to="/services/cybersecurity" className="text-muted-foreground text-sm hover:text-foreground transition-colors">Cybersecurity</Link></li>
+              <li><Link to="/services/ai-automation" className="text-muted-foreground text-sm hover:text-primary transition-colors">AI & Automation</Link></li>
+              <li><Link to="/services/data-analytics" className="text-muted-foreground text-sm hover:text-primary transition-colors">Data Analytics</Link></li>
+              <li><Link to="/services/cloud-solutions" className="text-muted-foreground text-sm hover:text-primary transition-colors">Cloud Solutions</Link></li>
+              <li><Link to="/services/cybersecurity" className="text-muted-foreground text-sm hover:text-primary transition-colors">Cybersecurity</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-foreground font-medium text-sm mb-4">Company</h4>
+            <h4 className="text-foreground font-heading font-bold text-sm mb-4">Company</h4>
             <ul className="space-y-3">
-              <li><Link to="/about" className="text-muted-foreground text-sm hover:text-foreground transition-colors">About Us</Link></li>
-              <li><Link to="/faq" className="text-muted-foreground text-sm hover:text-foreground transition-colors">FAQ</Link></li>
-              <li><button onClick={() => scrollTo("#contact")} className="text-muted-foreground text-sm hover:text-foreground transition-colors">Contact</button></li>
-              <li><Link to="/login" className="text-muted-foreground text-sm hover:text-foreground transition-colors">Login</Link></li>
+              <li><Link to="/about" className="text-muted-foreground text-sm hover:text-primary transition-colors">About Us</Link></li>
+              <li><Link to="/faq" className="text-muted-foreground text-sm hover:text-primary transition-colors">FAQ</Link></li>
+              <li><button onClick={() => scrollTo("#contact")} className="text-muted-foreground text-sm hover:text-primary transition-colors">Contact</button></li>
+              <li><Link to="/login" className="text-muted-foreground text-sm hover:text-primary transition-colors">Login</Link></li>
             </ul>
           </div>
         </div>
@@ -70,7 +70,7 @@ const Footer = () => {
           <p className="text-muted-foreground text-xs">© 2026 AA Innovation LLC. All rights reserved.</p>
           <div className="flex gap-6">
             {["Privacy Policy", "Terms of Service", "Cookies"].map((link) => (
-              <a key={link} href="#" className="text-muted-foreground text-xs hover:text-foreground transition-colors">{link}</a>
+              <a key={link} href="#" className="text-muted-foreground text-xs hover:text-primary transition-colors">{link}</a>
             ))}
           </div>
         </div>

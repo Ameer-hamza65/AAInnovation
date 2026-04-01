@@ -44,8 +44,10 @@ const ServicesSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="text-primary text-xs tracking-[0.3em] uppercase mb-4 font-medium">What We Do</p>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Our Services</h2>
+          <div className="eyebrow-badge mx-auto mb-4">
+            <span>What We Do</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-foreground">Our Services</h2>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -56,16 +58,16 @@ const ServicesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="group bg-card border border-border p-8 rounded-lg hover:border-primary/50 transition-all duration-300"
+              className="group bg-white border border-border p-8 rounded-[22px] hover:border-primary/30 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
             >
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
-                <service.icon className="text-primary" size={24} strokeWidth={1.5} />
+              <div className="w-12 h-12 rounded-[14px] flex items-center justify-center mb-6" style={{ background: "linear-gradient(135deg, hsl(43 90% 90%), hsl(43 100% 95%))", border: "1px solid hsl(43 70% 43% / 0.18)" }}>
+                <service.icon className="text-gold-deep" size={24} strokeWidth={1.5} />
               </div>
-              <h3 className="text-foreground font-semibold text-lg mb-3">{service.title}</h3>
+              <h3 className="text-foreground font-heading font-semibold text-lg mb-3">{service.title}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed mb-6">{service.description}</p>
               <Link
                 to={`/services/${service.slug}`}
-                className="inline-flex items-center gap-2 text-primary text-sm font-medium group-hover:gap-3 transition-all duration-200"
+                className="inline-flex items-center gap-2 text-primary text-sm font-bold group-hover:gap-3 transition-all duration-200"
               >
                 Learn More
                 <ArrowRight size={14} />

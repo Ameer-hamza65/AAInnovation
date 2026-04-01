@@ -23,7 +23,7 @@ const ContactSection = () => {
     setIsSubmitting(true);
     try {
       const formData = new FormData(e.currentTarget);
-      formData.append("access_key", "3ca66874-abca-4f25-888e-a6b5e69fe2fd");
+      formData.append("access_key", "792614a7-30bf-4834-bd63-f8113a8b3017");
       formData.append("subject", "New Contact Form Submission — AA Innovation");
       formData.append("from_name", "AA Innovation Website");
 
@@ -53,8 +53,10 @@ const ContactSection = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <p className="text-primary text-xs tracking-[0.3em] uppercase mb-4 font-medium">Get In Touch</p>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Contact Us</h2>
+          <div className="eyebrow-badge mx-auto mb-4">
+            <span>Get In Touch</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-foreground mb-4">Contact Us</h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
             Ready to innovate? Let's build what's next — together.
           </p>
@@ -66,38 +68,33 @@ const ContactSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="space-y-5 bg-card/50 backdrop-blur-sm border border-border rounded-lg p-8"
+          className="space-y-5 bg-white border border-border rounded-[22px] p-8 shadow-sm"
         >
           <p className="text-muted-foreground text-sm mb-2">
-            Required fields are marked with an asterisk (<span className="text-primary font-semibold">*</span>)
+            Required fields are marked with an asterisk (<span className="text-gold-deep font-bold">*</span>)
           </p>
 
-          {/* Full Name */}
           <FormInput label="Full Name" name="full_name" required placeholder="Jane Doe" />
-
-          {/* Email */}
           <FormInput label="Email" name="email" required type="email" placeholder="jane.doe@company.com" />
 
-          {/* Message */}
           <div>
-            <label className="block text-sm font-medium text-foreground mb-2">
-              Message <span className="text-primary">*</span>
+            <label className="block text-sm font-bold text-foreground mb-2">
+              Message <span className="text-gold-deep">*</span>
             </label>
             <textarea
               name="message"
               required
               rows={5}
               maxLength={2000}
-              className="w-full px-4 py-3 border border-border bg-card text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary resize-none placeholder:text-muted-foreground rounded-lg"
+              className="w-full px-4 py-3 border border-border bg-white text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/12 focus:border-primary/40 resize-none placeholder:text-muted-foreground rounded-[14px]"
               placeholder="Tell us about your project, challenge, or question..."
             />
           </div>
 
-          {/* Company & Phone */}
           <div className="grid sm:grid-cols-2 gap-5">
             <FormInput label="Company Name" name="company" placeholder="Your Company (optional)" />
             <div>
-              <label className="block text-sm font-medium text-foreground mb-1">
+              <label className="block text-sm font-bold text-foreground mb-1">
                 Phone Number
               </label>
               <p className="text-muted-foreground text-xs mb-2">For a faster response</p>
@@ -105,28 +102,26 @@ const ContactSection = () => {
                 name="phone"
                 type="tel"
                 placeholder="+1 (555) 000-0000"
-                className="w-full px-4 py-3 border border-border bg-card text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary placeholder:text-muted-foreground rounded-lg"
+                className="w-full px-4 py-3 border border-border bg-white text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/12 focus:border-primary/40 placeholder:text-muted-foreground rounded-[14px]"
               />
             </div>
           </div>
 
-          {/* Service Interest */}
           <FormSelect label="Service Interest" name="service_interest" options={serviceOptions} placeholder="Select a service (optional)" />
 
-          {/* Submit */}
           <button
             type="submit"
             disabled={isSubmitting}
-            className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-3.5 text-sm font-medium rounded-full hover:bg-primary/80 transition-colors disabled:opacity-50"
+            className="inline-flex items-center gap-3 bg-accent text-accent-foreground px-8 py-3.5 text-sm font-bold rounded-xl hover:bg-accent/90 transition-all hover:-translate-y-0.5 disabled:opacity-50 shadow-[0_10px_18px_rgba(214,169,53,0.2)]"
           >
             {isSubmitting ? "Sending..." : "Send Message"} <ArrowRight size={16} />
           </button>
         </motion.form>
 
         <div className="mt-8 text-center text-sm text-muted-foreground space-y-1">
-          <p><span className="text-foreground font-medium">Email:</span> info@aainnovation.com</p>
-          <p><span className="text-foreground font-medium">Phone:</span> +1 (321) 477-9875</p>
-          <p><span className="text-foreground font-medium">Web:</span> www.aainnovation.com</p>
+          <p><span className="text-foreground font-bold">Email:</span> info@aainnovation.com</p>
+          <p><span className="text-foreground font-bold">Phone:</span> +1 (321) 477-9875</p>
+          <p><span className="text-foreground font-bold">Web:</span> www.aainnovation.com</p>
         </div>
       </div>
     </section>
@@ -137,12 +132,12 @@ const FormInput = ({ label, name, required, type = "text", placeholder }: {
   label: string; name: string; required?: boolean; type?: string; placeholder?: string;
 }) => (
   <div>
-    <label className="block text-sm font-medium text-foreground mb-2">
-      {label} {required && <span className="text-primary">*</span>}
+    <label className="block text-sm font-bold text-foreground mb-2">
+      {label} {required && <span className="text-gold-deep">*</span>}
     </label>
     <input
       name={name} type={type} required={required} placeholder={placeholder}
-      className="w-full px-4 py-3 border border-border bg-card text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary placeholder:text-muted-foreground rounded-lg"
+      className="w-full px-4 py-3 border border-border bg-white text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/12 focus:border-primary/40 placeholder:text-muted-foreground rounded-[14px]"
     />
   </div>
 );
@@ -151,11 +146,11 @@ const FormSelect = ({ label, name, required, options, placeholder }: {
   label: string; name: string; required?: boolean; options: string[]; placeholder: string;
 }) => (
   <div>
-    <label className="block text-sm font-medium text-foreground mb-2">
-      {label} {required && <span className="text-primary">*</span>}
+    <label className="block text-sm font-bold text-foreground mb-2">
+      {label} {required && <span className="text-gold-deep">*</span>}
     </label>
     <Select name={name} required={required}>
-      <SelectTrigger className="w-full px-4 py-3 h-auto border border-border bg-card text-sm">
+      <SelectTrigger className="w-full px-4 py-3 h-auto border border-border bg-white text-sm rounded-[14px]">
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       <SelectContent>

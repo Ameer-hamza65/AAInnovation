@@ -10,7 +10,7 @@ const ParticleBackground = () => {
     if (!ctx) return;
 
     let animationId: number;
-    const particles: { x: number; y: number; vx: number; vy: number; size: number; opacity: number }[] = [];
+    const particles: { x: number; y: number; vx: number; vy: number; size: number; opacity: number; isGold: boolean }[] = [];
     let w = 0;
     let h = 0;
 
@@ -33,7 +33,8 @@ const ParticleBackground = () => {
           vx: (Math.random() - 0.5) * 0.3,
           vy: (Math.random() - 0.5) * 0.3,
           size: Math.random() * 1.5 + 0.5,
-          opacity: Math.random() * 0.4 + 0.1,
+          opacity: Math.random() * 0.25 + 0.05,
+          isGold: Math.random() < 0.3,
         });
       }
     };
@@ -49,7 +50,9 @@ const ParticleBackground = () => {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(201, 100%, 36%, ${p.opacity})`;
+        ctx.fillStyle = p.isGold
+          ? `hsla(43, 70%, 43%, ${p.opacity})`
+          : `hsla(228, 74%, 42%, ${p.opacity})`;
         ctx.fill();
       });
 
@@ -62,7 +65,7 @@ const ParticleBackground = () => {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `hsla(201, 100%, 36%, ${0.08 * (1 - dist / 120)})`;
+            ctx.strokeStyle = `hsla(228, 74%, 42%, ${0.05 * (1 - dist / 120)})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }

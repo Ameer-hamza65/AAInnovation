@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, Bot, BarChart3, Cloud, Shield, Monitor, Cpu } from "lucide-react";
+import { ArrowLeft, ArrowRight, Bot, BarChart3, Cloud, Shield } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import heroBg from "@/assets/hero-bg.jpg";
+import goldWaveBg from "@/assets/gold-wave-background.png";
 
 const serviceData: Record<string, {
   icon: typeof Bot; title: string; tagline: string; description: string;
@@ -49,14 +49,12 @@ const ServiceDetail = () => {
 
   if (!service) {
     return (
-      <div className="relative min-h-screen">
-        <div className="fixed inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${heroBg})` }} />
-        <div className="fixed inset-0 bg-background/50" />
+      <div className="relative min-h-screen bg-gradient-to-b from-white to-secondary">
         <div className="relative z-10">
           <Navbar />
           <div className="pt-28 pb-16 text-center">
             <h1 className="text-3xl font-bold text-foreground mb-4">Service not found</h1>
-            <Link to="/" className="text-primary font-medium">Back to Home</Link>
+            <Link to="/" className="text-primary font-bold">Back to Home</Link>
           </div>
           <Footer />
         </div>
@@ -71,23 +69,22 @@ const ServiceDetail = () => {
   const Icon = service.icon;
 
   return (
-    <div className="relative min-h-screen">
-      <div className="fixed inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${heroBg})` }} />
-      <div className="fixed inset-0 bg-background/50" />
+    <div className="relative min-h-screen bg-gradient-to-b from-white to-secondary">
+      <div className="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-[0.15] pointer-events-none gold-wave-bg" style={{ backgroundImage: `url(${goldWaveBg})` }} />
       <div className="relative z-10">
         <Navbar />
 
         <section className="pt-28 pb-12">
           <div className="max-w-5xl mx-auto px-6">
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
-              <Link to="/#services" className="inline-flex items-center gap-2 text-primary text-sm font-medium mb-6 hover:gap-3 transition-all">
+              <Link to="/#services" className="inline-flex items-center gap-2 text-primary text-sm font-bold mb-6 hover:gap-3 transition-all">
                 <ArrowLeft size={16} /> Back to Services
               </Link>
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <Icon size={28} className="text-primary" />
+                <div className="w-14 h-14 rounded-[14px] flex items-center justify-center" style={{ background: "linear-gradient(135deg, hsl(43 90% 90%), hsl(43 100% 95%))", border: "1px solid hsl(43 70% 43% / 0.18)" }}>
+                  <Icon size={28} className="text-gold-deep" />
                 </div>
-                <h1 className="text-4xl md:text-5xl font-black text-foreground">{service.title}</h1>
+                <h1 className="text-4xl md:text-5xl font-heading font-extrabold text-foreground">{service.title}</h1>
               </div>
               <p className="text-muted-foreground text-lg max-w-2xl">{service.tagline}</p>
             </motion.div>
@@ -105,7 +102,7 @@ const ServiceDetail = () => {
               <h2 className="text-2xl font-extrabold text-foreground mb-6">Key Capabilities</h2>
               <div className="grid sm:grid-cols-2 gap-4">
                 {service.capabilities.map((cap) => (
-                  <div key={cap} className="flex items-start gap-3 p-4 bg-card/50 border border-border rounded-lg">
+                  <div key={cap} className="flex items-start gap-3 p-4 bg-white border border-border rounded-[14px] shadow-sm">
                     <div className="w-2 h-2 rounded-full bg-primary mt-2 shrink-0" />
                     <span className="text-foreground text-sm">{cap}</span>
                   </div>
@@ -117,7 +114,7 @@ const ServiceDetail = () => {
               <h2 className="text-2xl font-extrabold text-foreground mb-6">Benefits</h2>
               <div className="grid sm:grid-cols-2 gap-4">
                 {service.benefits.map((b) => (
-                  <div key={b} className="flex items-start gap-3 p-4 bg-primary/5 border border-primary/20 rounded-lg">
+                  <div key={b} className="flex items-start gap-3 p-4 bg-secondary border border-primary/15 rounded-[14px]">
                     <div className="w-2 h-2 rounded-full bg-primary mt-2 shrink-0" />
                     <span className="text-foreground text-sm">{b}</span>
                   </div>
@@ -129,7 +126,7 @@ const ServiceDetail = () => {
               <h3 className="text-xl font-bold text-foreground mb-4">Ready to get started?</h3>
               <button
                 onClick={scrollToContact}
-                className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-3.5 text-sm font-medium rounded-full hover:bg-primary/90 transition-colors"
+                className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-3.5 text-sm font-bold rounded-xl hover:bg-primary/90 transition-all shadow-[0_10px_18px_rgba(28,57,187,0.18)]"
               >
                 Book a Free Strategy Call <ArrowRight size={16} />
               </button>
