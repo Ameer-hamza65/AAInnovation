@@ -1,6 +1,6 @@
 import { Menu, User, LogOut, ChevronDown, HelpCircle } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { useAuth } from "@/contexts/AuthContext";
 import Logo from "@/components/Logo";
@@ -108,7 +108,11 @@ const Navbar = ({ onContactClick }: { onContactClick?: () => void } = {}) => {
               >
                 {link.label}
                 {activeHash === link.hash && (
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-[2.5px] bg-gold rounded-full" />
+                  <motion.span
+                    layoutId="nav-underline"
+                    className="absolute -bottom-[1px] left-[12%] right-[12%] h-[2.5px] bg-gold rounded-full"
+                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                  />
                 )}
               </button>
             ))}
