@@ -1,6 +1,6 @@
 import { Menu, User, LogOut, ChevronDown, HelpCircle } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useAuth } from "@/contexts/AuthContext";
 import Logo from "@/components/Logo";
@@ -35,6 +35,29 @@ const Navbar = ({ onContactClick }: { onContactClick?: () => void } = {}) => {
   const { user, logout } = useAuth();
   const [sheetOpen, setSheetOpen] = useState(false);
   const [activeHash, setActiveHash] = useState("");
+
+  // Auto-update active hash based on scroll position
+  useEffect(() => {
+    if (location.pathname !== "/") return;
+
+    const sectionIds = ["contact", "industries", "services", "about"];
+    const handleScroll = () => {
+      const scrollY = window.scrollY + 120;
+
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= scrollY) {
+          setActiveHash("#" + id);
+          return;
+        }
+      }
+      setActiveHash("");
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [location.pathname]);
 
   const scrollToSection = useCallback(
     (hash: string) => {
