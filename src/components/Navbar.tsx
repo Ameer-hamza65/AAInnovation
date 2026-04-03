@@ -28,15 +28,18 @@ const navLinks = [
   { label: "Contact Us", to: "/", hash: "#contact" },
 ];
 
+
 const Navbar = ({ onContactClick }: { onContactClick?: () => void } = {}) => {
   const location = useLocation();
   const navigate = useNavigate();
   const { user, logout } = useAuth();
   const [sheetOpen, setSheetOpen] = useState(false);
+  const [activeHash, setActiveHash] = useState("");
 
   const scrollToSection = useCallback(
     (hash: string) => {
       setSheetOpen(false);
+      setActiveHash(hash);
       if (location.pathname !== "/") {
         navigate("/" + hash);
         return;
@@ -78,9 +81,12 @@ const Navbar = ({ onContactClick }: { onContactClick?: () => void } = {}) => {
               <button
                 key={link.label}
                 onClick={() => scrollToSection(link.hash)}
-                className="relative px-4 py-2.5 text-[13px] font-semibold tracking-wide text-foreground/70 hover:text-primary hover:bg-secondary rounded-xl transition-colors duration-200"
+                className={`relative px-4 py-2.5 text-[13px] font-semibold tracking-wide hover:text-primary hover:bg-secondary rounded-xl transition-colors duration-200 ${activeHash === link.hash ? "text-primary" : "text-foreground/70"}`}
               >
                 {link.label}
+                {activeHash === link.hash && (
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-[2.5px] bg-gold rounded-full" />
+                )}
               </button>
             ))}
 
