@@ -64,7 +64,7 @@ const ContactFormModal = ({ open, onOpenChange }: ContactFormModalProps) => {
           <div className="flex-1 flex flex-col px-7 py-8 overflow-hidden">
             <div className="mb-6">
               <DialogPrimitive.Title className="flex items-center gap-2 text-lg font-heading font-bold text-foreground mb-1.5">
-                <Sparkles className="h-5 w-5 text-gold-dim" />
+                <Sparkles className="h-5 w-5 text-primary" />
                 Let's Build Together
               </DialogPrimitive.Title>
               <DialogPrimitive.Description className="text-xs text-muted-foreground leading-relaxed">
@@ -117,7 +117,10 @@ const ContactFormModal = ({ open, onOpenChange }: ContactFormModalProps) => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 py-2.5 text-sm font-bold rounded-xl hover:bg-accent/90 transition-all disabled:opacity-50 shadow-[0_10px_18px_rgba(214,169,53,0.2)]"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 text-sm font-bold rounded-xl text-white transition-all disabled:opacity-50 shadow-[0_10px_18px_rgba(53,88,216,0.22)]"
+                  style={{ backgroundColor: "hsl(228 65% 53%)" }}
+                  onMouseEnter={e => (e.currentTarget.style.backgroundColor = "hsl(228 74% 42%)")}
+                  onMouseLeave={e => (e.currentTarget.style.backgroundColor = "hsl(228 65% 53%)")}
                 >
                   {isSubmitting ? "Sending..." : "Send Message"} <Send size={14} />
                 </button>

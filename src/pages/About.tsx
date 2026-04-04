@@ -6,25 +6,31 @@ import Footer from "@/components/Footer";
 import ValuesSection from "@/components/ValuesSection";
 import PillarsSection from "@/components/PillarsSection";
 import teamImg from "@/assets/team-collab.jpg";
-import goldWaveBg from "@/assets/gold-wave-background.png";
+import goldWaveBottom from "@/assets/gold-wave-bottom.png";
 
 const About = () => {
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-white to-secondary">
-      <div className="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-[0.15] pointer-events-none gold-wave-bg" style={{ backgroundImage: `url(${goldWaveBg})` }} />
+    <div className="relative min-h-screen bg-white">
+      <div
+        className="fixed bottom-0 left-0 right-0 h-[260px] md:h-[340px] pointer-events-none opacity-40 z-0"
+        style={{ backgroundImage: `url(${goldWaveBottom})`, backgroundSize: '100% 100%', backgroundPosition: 'bottom center', backgroundRepeat: 'no-repeat' }}
+      />
       <div className="relative z-10">
         <Navbar />
 
-        <section className="pt-28 pb-12">
+        <section className="pt-32 pb-16">
           <div className="max-w-7xl mx-auto px-6">
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
-              <Link to="/" className="inline-flex items-center gap-2 text-primary text-sm font-bold mb-6 hover:gap-3 transition-all">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+              <Link to="/" className="inline-flex items-center gap-2 text-primary text-sm font-bold mb-8 hover:gap-3 transition-all">
                 <ArrowLeft size={16} /> Back to Home
               </Link>
-              <div className="eyebrow-badge mb-4">
+              <div className="eyebrow-badge mb-5">
                 <span>About AA Innovation</span>
               </div>
-              <h1 className="text-4xl md:text-5xl font-heading font-extrabold text-foreground">Who We Are</h1>
+              <h1 className="text-4xl md:text-5xl font-heading font-extrabold text-foreground leading-tight">Who We Are</h1>
+              <p className="text-muted-foreground text-lg mt-4 max-w-2xl">
+                A forward-thinking technology and consulting firm delivering transformative solutions across industries.
+              </p>
             </motion.div>
           </div>
         </section>

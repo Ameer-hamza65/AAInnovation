@@ -14,7 +14,7 @@ const HeroSection = ({ onContactClick }: { onContactClick?: () => void } = {}) =
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-[72px]">
       {/* Subtle gold radial glow on right */}
-      <div className="absolute right-[-10%] top-[-20%] w-[600px] h-[600px] rounded-full pointer-events-none animate-float" style={{ background: "radial-gradient(circle, rgba(249,204,92,0.18), transparent 70%)" }} />
+      <div className="absolute right-[-10%] top-[-20%] w-[600px] h-[600px] rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(249,204,92,0.18), transparent 70%)" }} />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-24">
         <div className="max-w-3xl">
@@ -61,7 +61,10 @@ const HeroSection = ({ onContactClick }: { onContactClick?: () => void } = {}) =
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, delay: 0.4 }}
               whileHover={{ scale: 1.03 }}
-              className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-3.5 text-sm font-bold rounded-xl hover:bg-primary/90 transition-all hover:-translate-y-0.5 shadow-[0_10px_18px_rgba(28,57,187,0.18)]"
+              className="inline-flex items-center gap-3 px-8 py-3.5 text-sm font-bold rounded-xl text-white transition-all hover:-translate-y-0.5 shadow-[0_10px_18px_rgba(53,88,216,0.22)]"
+              style={{ backgroundColor: "hsl(228 65% 53%)" }}
+              onMouseEnter={e => (e.currentTarget.style.backgroundColor = "hsl(228 74% 42%)")}
+              onMouseLeave={e => (e.currentTarget.style.backgroundColor = "hsl(228 65% 53%)")}
             >
               Book a Free Strategy Call
               <ArrowRight size={16} />
@@ -75,7 +78,7 @@ const HeroSection = ({ onContactClick }: { onContactClick?: () => void } = {}) =
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, delay: 0.5 }}
               whileHover={{ scale: 1.03 }}
-              className="inline-flex items-center gap-3 bg-accent text-accent-foreground px-8 py-3.5 text-sm font-bold rounded-xl hover:bg-accent/90 transition-all hover:-translate-y-0.5 shadow-[0_10px_18px_rgba(214,169,53,0.2)]"
+              className="inline-flex items-center gap-3 px-8 py-3.5 text-sm font-bold rounded-xl border-2 border-primary/20 text-foreground hover:border-primary/40 hover:bg-secondary transition-all hover:-translate-y-0.5"
             >
               Explore Services
               <ArrowRight size={16} />

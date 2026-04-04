@@ -52,9 +52,9 @@ const PillarsSection = () => {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
               viewport={{ once: true }}
-              className="bg-white p-8 border border-border rounded-[22px] border-l-[5px] border-l-gold hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-md"
+              className="bg-white p-8 border border-border rounded-[22px] border-l-[5px] border-l-primary hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-md"
             >
-              <span className="text-gold-deep text-3xl font-heading font-bold">{p.num}</span>
+              <span className="text-primary text-3xl font-heading font-bold">{p.num}</span>
               <h3 className="text-lg font-heading font-semibold text-foreground mt-4 mb-3">{p.title}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">{p.desc}</p>
             </motion.div>

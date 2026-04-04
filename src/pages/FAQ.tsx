@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import ContactFormModal from "@/components/ContactFormModal";
 import { useState } from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import goldWaveBg from "@/assets/gold-wave-background.png";
+import goldWaveBottom from "@/assets/gold-wave-bottom.png";
 
 const faqs = [
   { q: "What services does AA Innovation offer?", a: "We offer AI & Machine Learning, Cloud Solutions, Cybersecurity, Data Analytics, Digital Transformation, IT Consulting, and Custom Software Development. Each service is tailored to your organization's specific needs." },
@@ -20,8 +20,11 @@ const FAQ = () => {
   const [contactModalOpen, setContactModalOpen] = useState(false);
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-white to-secondary">
-      <div className="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-[0.15] pointer-events-none gold-wave-bg" style={{ backgroundImage: `url(${goldWaveBg})` }} />
+    <div className="relative min-h-screen bg-white">
+      <div
+        className="fixed bottom-0 left-0 right-0 h-[260px] md:h-[340px] pointer-events-none opacity-40 z-0"
+        style={{ backgroundImage: `url(${goldWaveBottom})`, backgroundSize: '100% 100%', backgroundPosition: 'bottom center', backgroundRepeat: 'no-repeat' }}
+      />
       <div className="relative z-10">
         <Navbar onContactClick={() => setContactModalOpen(true)} />
         <main className="pt-[72px]">

@@ -10,7 +10,6 @@ import WhyUsSection from "@/components/WhyUsSection";
 import ContactSection from "@/components/ContactSection";
 import ContactFormModal from "@/components/ContactFormModal";
 import Footer from "@/components/Footer";
-import goldWaveBg from "@/assets/gold-wave-background.png";
 import goldWaveBottom from "@/assets/gold-wave-bottom.png";
 
 const Index = () => {
@@ -21,22 +20,21 @@ const Index = () => {
     if (location.hash) {
       setTimeout(() => {
         const el = document.querySelector(location.hash);
-        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+        if (el) {
+          const navHeight = 72;
+          const top = el.getBoundingClientRect().top + window.scrollY - navHeight;
+          window.scrollTo({ top, behavior: "smooth" });
+        }
       }, 100);
     }
   }, [location]);
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-white to-secondary">
-      {/* Gold wave edge highlights */}
+    <div className="relative min-h-screen bg-white">
+      {/* Golden wave at bottom */}
       <div
-        className="fixed inset-0 bg-cover bg-no-repeat opacity-[0.15] pointer-events-none gold-wave-bg"
-        style={{ backgroundImage: `url(${goldWaveBg})`, backgroundPosition: 'center 95%' }}
-      />
-      {/* Gold wave at bottom — background layer */}
-      <div
-        className="fixed bottom-0 left-0 right-0 h-[300px] md:h-[400px] pointer-events-none opacity-[0.18] gold-wave-bg"
-        style={{ backgroundImage: `url(${goldWaveBottom})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+        className="fixed bottom-0 left-0 right-0 h-[260px] md:h-[340px] pointer-events-none opacity-40 z-0"
+        style={{ backgroundImage: `url(${goldWaveBottom})`, backgroundSize: '100% 100%', backgroundPosition: 'bottom center', backgroundRepeat: 'no-repeat' }}
       />
       <div className="relative z-10">
         <Navbar />

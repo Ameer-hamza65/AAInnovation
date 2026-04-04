@@ -58,10 +58,10 @@ const ServicesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="group bg-white border border-border p-8 rounded-[22px] hover:border-primary/30 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              className="group bg-white border border-border p-8 rounded-[22px] shadow-sm hover:border-primary/30 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
             >
-              <div className="w-12 h-12 rounded-[14px] flex items-center justify-center mb-6" style={{ background: "linear-gradient(135deg, hsl(43 90% 90%), hsl(43 100% 95%))", border: "1px solid hsl(43 70% 43% / 0.18)" }}>
-                <service.icon className="text-gold-deep" size={24} strokeWidth={1.5} />
+              <div className="w-12 h-12 rounded-[14px] flex items-center justify-center mb-6 bg-primary/5 border border-primary/10">
+                <service.icon className="text-primary" size={24} strokeWidth={1.5} />
               </div>
               <h3 className="text-foreground font-heading font-semibold text-lg mb-3">{service.title}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed mb-6">{service.description}</p>

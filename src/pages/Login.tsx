@@ -5,7 +5,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/contexts/AuthContext";
 import Navbar from "@/components/Navbar";
 import Logo from "@/components/Logo";
-import goldWaveBg from "@/assets/gold-wave-background.png";
+import goldWaveBottom from "@/assets/gold-wave-bottom.png";
 
 const Login = () => {
   const { toast } = useToast();
@@ -27,8 +27,11 @@ const Login = () => {
   };
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-white to-secondary">
-      <div className="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-[0.15] pointer-events-none gold-wave-bg" style={{ backgroundImage: `url(${goldWaveBg})` }} />
+    <div className="relative min-h-screen flex items-center justify-center bg-white">
+      <div
+        className="fixed bottom-0 left-0 right-0 h-[260px] md:h-[340px] pointer-events-none opacity-40 z-0"
+        style={{ backgroundImage: `url(${goldWaveBottom})`, backgroundSize: '100% 100%', backgroundPosition: 'bottom center', backgroundRepeat: 'no-repeat' }}
+      />
       <div className="fixed top-0 left-0 right-0 z-50">
         <Navbar />
       </div>

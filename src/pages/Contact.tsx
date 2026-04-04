@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
+import goldWaveBottom from "@/assets/gold-wave-bottom.png";
 
 const topics = ["Industries", "Solutions", "Careers", "Partnerships", "Press / Media", "Website Feedback", "Other"];
 const locations = [
@@ -79,7 +80,12 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="relative min-h-screen bg-white">
+      <div
+        className="fixed bottom-0 left-0 right-0 h-[260px] md:h-[340px] pointer-events-none opacity-40 z-0"
+        style={{ backgroundImage: `url(${goldWaveBottom})`, backgroundSize: '100% 100%', backgroundPosition: 'bottom center', backgroundRepeat: 'no-repeat' }}
+      />
+      <div className="relative z-10">
       <Navbar />
 
       {/* Header */}
@@ -230,9 +236,6 @@ const Contact = () => {
                 <p className="text-muted-foreground">
                   <span className="text-foreground font-medium">Phone:</span> +1 (321) 477-9875
                 </p>
-                <p className="text-muted-foreground">
-                  <span className="text-foreground font-medium">Web:</span> www.aainnovation.com
-                </p>
               </div>
             </div>
           </motion.div>
@@ -240,6 +243,7 @@ const Contact = () => {
       </section>
 
       <Footer />
+      </div>
     </div>
   );
 };

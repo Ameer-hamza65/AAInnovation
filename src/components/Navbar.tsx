@@ -1,7 +1,7 @@
 import { Menu, User, LogOut, ChevronDown, HelpCircle } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState, useCallback, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "@/contexts/AuthContext";
 import Logo from "@/components/Logo";
 import {
@@ -20,14 +20,24 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-const navLinks = [
-  { label: "Home", to: "/", hash: "" },
-  { label: "About Us", to: "/", hash: "#about" },
-  { label: "Services", to: "/", hash: "#services" },
-  { label: "Industries", to: "/", hash: "#industries" },
-  { label: "Contact Us", to: "/", hash: "#contact" },
+const aboutDropdownItems = [
+  { label: "Our Story", hash: "#about" },
+  { label: "Our Values", to: "/about" },
+  { label: "FAQ", to: "/faq" },
 ];
 
+const servicesDropdownItems = [
+  { label: "AI & Automation", to: "/services/ai-automation" },
+  { label: "Data & Analytics", to: "/services/data-analytics" },
+  { label: "Cloud Solutions", to: "/services/cloud-solutions" },
+  { label: "Cybersecurity", to: "/services/cybersecurity" },
+];
+
+const simpleNavLinks = [
+  { label: "Home", hash: "" },
+  { label: "Industries", hash: "#industries" },
+  { label: "Contact Us", hash: "#contact" },
+];
 
 const Navbar = ({ onContactClick }: { onContactClick?: () => void } = {}) => {
   const location = useLocation();
@@ -35,15 +45,15 @@ const Navbar = ({ onContactClick }: { onContactClick?: () => void } = {}) => {
   const { user, logout } = useAuth();
   const [sheetOpen, setSheetOpen] = useState(false);
   const [activeHash, setActiveHash] = useState("");
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const dropdownTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Auto-update active hash based on scroll position
   useEffect(() => {
     if (location.pathname !== "/") return;
 
     const sectionIds = ["contact", "industries", "services", "about"];
     const handleScroll = () => {
       const scrollY = window.scrollY + 120;
-
       for (const id of sectionIds) {
         const el = document.getElementById(id);
         if (el && el.offsetTop <= scrollY) {
@@ -73,17 +83,93 @@ const Navbar = ({ onContactClick }: { onContactClick?: () => void } = {}) => {
       }
       const el = document.querySelector(hash);
       if (el) {
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        const navHeight = 72;
+        const top = el.getBoundingClientRect().top + window.scrollY - navHeight;
+        window.scrollTo({ top, behavior: "smooth" });
       }
     },
     [location.pathname, navigate]
   );
+
+  const handleDropdownEnter = (name: string) => {
+    if (dropdownTimeout.current) clearTimeout(dropdownTimeout.current);
+    setOpenDropdown(name);
+  };
+
+  const handleDropdownLeave = () => {
+    dropdownTimeout.current = setTimeout(() => setOpenDropdown(null), 150);
+  };
+
+  const handleDropdownItemClick = (item: { label: string; hash?: string; to?: string }) => {
+    setOpenDropdown(null);
+    if (item.hash) {
+      scrollToSection(item.hash);
+    } else if (item.to) {
+      navigate(item.to);
+    }
+  };
 
   const handleLogout = () => {
     logout();
     setSheetOpen(false);
     navigate("/");
   };
+
+  const isAboutActive = activeHash === "#about";
+  const isServicesActive = activeHash === "#services";
+
+  const renderDropdownNav = (
+    label: string,
+    items: { label: string; hash?: string; to?: string }[],
+    isActive: boolean,
+    parentHash: string
+  ) => (
+    <div
+      className="relative"
+      onMouseEnter={() => handleDropdownEnter(label)}
+      onMouseLeave={handleDropdownLeave}
+    >
+      <button
+        onClick={() => scrollToSection(parentHash)}
+        className={`relative flex items-center gap-1 px-4 py-2.5 text-[13px] font-semibold tracking-wide hover:text-primary hover:bg-secondary rounded-xl transition-colors duration-200 ${isActive ? "text-primary" : "text-foreground/70"}`}
+      >
+        {label}
+        <ChevronDown
+          size={12}
+          className={`opacity-50 transition-transform duration-200 ${openDropdown === label ? "rotate-180" : ""}`}
+        />
+        {isActive && (
+          <motion.span
+            layoutId="nav-underline"
+            className="absolute -bottom-[1px] left-[12%] right-[12%] h-[2.5px] bg-gold rounded-full"
+            transition={{ type: "spring", stiffness: 380, damping: 32 }}
+          />
+        )}
+      </button>
+
+      <AnimatePresence>
+        {openDropdown === label && (
+          <motion.div
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 6 }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
+            className="absolute top-full left-0 mt-1 w-52 bg-white border border-border rounded-xl shadow-lg overflow-hidden z-50"
+          >
+            {items.map((item) => (
+              <button
+                key={item.label}
+                onClick={() => handleDropdownItemClick(item)}
+                className="w-full text-left px-4 py-2.5 text-[13px] font-medium text-foreground/70 hover:text-primary hover:bg-primary/5 transition-colors duration-150"
+              >
+                {item.label}
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
 
   return (
     <>
@@ -100,7 +186,29 @@ const Navbar = ({ onContactClick }: { onContactClick?: () => void } = {}) => {
 
           {/* Desktop nav links */}
           <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
+            {/* Home */}
+            <button
+              onClick={() => scrollToSection("")}
+              className={`relative px-4 py-2.5 text-[13px] font-semibold tracking-wide hover:text-primary hover:bg-secondary rounded-xl transition-colors duration-200 ${activeHash === "" ? "text-primary" : "text-foreground/70"}`}
+            >
+              Home
+              {activeHash === "" && (
+                <motion.span
+                  layoutId="nav-underline"
+                  className="absolute -bottom-[1px] left-[12%] right-[12%] h-[2.5px] bg-gold rounded-full"
+                  transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                />
+              )}
+            </button>
+
+            {/* About Us dropdown */}
+            {renderDropdownNav("About Us", aboutDropdownItems, isAboutActive, "#about")}
+
+            {/* Services dropdown */}
+            {renderDropdownNav("Services", servicesDropdownItems, isServicesActive, "#services")}
+
+            {/* Industries & Contact */}
+            {simpleNavLinks.filter(l => l.label !== "Home").map((link) => (
               <button
                 key={link.label}
                 onClick={() => scrollToSection(link.hash)}
@@ -167,16 +275,43 @@ const Navbar = ({ onContactClick }: { onContactClick?: () => void } = {}) => {
             </SheetDescription>
           </SheetHeader>
 
-          <div className="space-y-2">
-            {navLinks.map((link) => (
-              <button
-                key={link.label}
-                onClick={() => scrollToSection(link.hash)}
-                className="flex items-center gap-3 px-4 py-3 text-sm text-foreground/80 hover:text-primary hover:bg-secondary transition-colors rounded-xl w-full text-left"
-              >
-                {link.label}
-              </button>
-            ))}
+          <div className="space-y-1">
+            <button
+              onClick={() => scrollToSection("")}
+              className="flex items-center gap-3 px-4 py-3 text-sm text-foreground/80 hover:text-primary hover:bg-secondary transition-colors rounded-xl w-full text-left"
+            >
+              Home
+            </button>
+
+            {/* About Us with sub-items */}
+            <MobileAccordionNav
+              label="About Us"
+              items={aboutDropdownItems}
+              onItemClick={handleDropdownItemClick}
+              onParentClick={() => scrollToSection("#about")}
+            />
+
+            {/* Services with sub-items */}
+            <MobileAccordionNav
+              label="Services"
+              items={servicesDropdownItems}
+              onItemClick={handleDropdownItemClick}
+              onParentClick={() => scrollToSection("#services")}
+            />
+
+            <button
+              onClick={() => scrollToSection("#industries")}
+              className="flex items-center gap-3 px-4 py-3 text-sm text-foreground/80 hover:text-primary hover:bg-secondary transition-colors rounded-xl w-full text-left"
+            >
+              Industries
+            </button>
+
+            <button
+              onClick={() => scrollToSection("#contact")}
+              className="flex items-center gap-3 px-4 py-3 text-sm text-foreground/80 hover:text-primary hover:bg-secondary transition-colors rounded-xl w-full text-left"
+            >
+              Contact Us
+            </button>
 
             {user ? (
               <>
@@ -216,6 +351,61 @@ const Navbar = ({ onContactClick }: { onContactClick?: () => void } = {}) => {
         </SheetContent>
       </Sheet>
     </>
+  );
+};
+
+/* Mobile accordion sub-nav */
+const MobileAccordionNav = ({
+  label,
+  items,
+  onItemClick,
+  onParentClick,
+}: {
+  label: string;
+  items: { label: string; hash?: string; to?: string }[];
+  onItemClick: (item: { label: string; hash?: string; to?: string }) => void;
+  onParentClick: () => void;
+}) => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div>
+      <div className="flex items-center">
+        <button
+          onClick={onParentClick}
+          className="flex-1 flex items-center gap-3 px-4 py-3 text-sm text-foreground/80 hover:text-primary hover:bg-secondary transition-colors rounded-l-xl text-left"
+        >
+          {label}
+        </button>
+        <button
+          onClick={() => setOpen(!open)}
+          className="px-3 py-3 text-foreground/50 hover:text-primary hover:bg-secondary transition-colors rounded-r-xl"
+        >
+          <ChevronDown size={14} className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
+        </button>
+      </div>
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="overflow-hidden"
+          >
+            {items.map((item) => (
+              <button
+                key={item.label}
+                onClick={() => onItemClick(item)}
+                className="w-full text-left pl-8 pr-4 py-2.5 text-[13px] text-foreground/60 hover:text-primary hover:bg-secondary/50 transition-colors rounded-lg"
+              >
+                {item.label}
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 };
 

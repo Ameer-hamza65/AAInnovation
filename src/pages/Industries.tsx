@@ -3,6 +3,7 @@ import { Zap, Heart, Factory, DollarSign, Users, Building, Truck } from "lucide-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactBanner from "@/components/ContactBanner";
+import goldWaveBottom from "@/assets/gold-wave-bottom.png";
 
 const industries = [
   {
@@ -44,7 +45,12 @@ const industries = [
 
 const Industries = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="relative min-h-screen bg-white">
+      <div
+        className="fixed bottom-0 left-0 right-0 h-[260px] md:h-[340px] pointer-events-none opacity-40 z-0"
+        style={{ backgroundImage: `url(${goldWaveBottom})`, backgroundSize: '100% 100%', backgroundPosition: 'bottom center', backgroundRepeat: 'no-repeat' }}
+      />
+      <div className="relative z-10">
       <Navbar />
 
       <section className="bg-secondary pt-28 pb-16 border-b border-border">
@@ -89,6 +95,7 @@ const Industries = () => {
 
       <ContactBanner />
       <Footer />
+      </div>
     </div>
   );
 };

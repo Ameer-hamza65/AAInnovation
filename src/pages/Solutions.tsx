@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactBanner from "@/components/ContactBanner";
+import goldWaveBottom from "@/assets/gold-wave-bottom.png";
 
 const categories = ["All", "AI & Automation", "Data & Analytics", "Cloud", "Cybersecurity", "Digital Transformation"];
 
@@ -22,7 +23,12 @@ const Solutions = () => {
   const filtered = active === "All" ? solutions : solutions.filter((s) => s.category === active);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-secondary">
+    <div className="relative min-h-screen bg-white">
+      <div
+        className="fixed bottom-0 left-0 right-0 h-[260px] md:h-[340px] pointer-events-none opacity-40 z-0"
+        style={{ backgroundImage: `url(${goldWaveBottom})`, backgroundSize: '100% 100%', backgroundPosition: 'bottom center', backgroundRepeat: 'no-repeat' }}
+      />
+      <div className="relative z-10">
       <Navbar />
 
       <section className="bg-secondary pt-28 pb-16 border-b border-border">
@@ -92,6 +98,7 @@ const Solutions = () => {
 
       <ContactBanner />
       <Footer />
+      </div>
     </div>
   );
 };

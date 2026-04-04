@@ -51,7 +51,7 @@ const ValuesSection = () => {
               viewport={{ once: true }}
               className="bg-white p-8 border border-border rounded-[22px] hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-md"
             >
-              <h3 className="text-gold-deep font-heading font-semibold text-sm tracking-wide uppercase mb-4">{card.label}</h3>
+              <h3 className="text-primary font-heading font-semibold text-sm tracking-wide uppercase mb-4">{card.label}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">{card.text}</p>
             </motion.div>
           ))}
@@ -70,8 +70,8 @@ const ValuesSection = () => {
               viewport={{ once: true }}
               className="text-center p-6"
             >
-              <div className="w-12 h-12 rounded-[14px] flex items-center justify-center mx-auto mb-4" style={{ background: "linear-gradient(135deg, hsl(43 90% 90%), hsl(43 100% 95%))", border: "1px solid hsl(43 70% 43% / 0.18)" }}>
-                <v.icon size={24} className="text-gold-deep" />
+              <div className="w-12 h-12 rounded-[14px] flex items-center justify-center mx-auto mb-4 bg-primary/5 border border-primary/10">
+                <v.icon size={24} className="text-primary" />
               </div>
               <h4 className="text-foreground font-heading font-semibold text-sm mb-2">{v.title}</h4>
               <p className="text-muted-foreground text-xs leading-relaxed">{v.desc}</p>

@@ -16,7 +16,7 @@ const ContactBanner = () => {
             Ready to innovate? Let's build what's next — together.
           </h2>
           <p className="text-muted-foreground mb-8">
-            info@aainnovation.com · www.aainnovation.com
+            info@aainnovation.com
           </p>
           <Link
             to="/contact"

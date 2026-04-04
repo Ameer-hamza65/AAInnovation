@@ -9,7 +9,7 @@
     /* AA Innovation — Light Theme */
     /* Persian Blue #1C39BB, Gold #F9CC5C */
 
-    --background: 220 20% 98%;
+    --background: 0 0% 100%;
     --foreground: 228 70% 18%;
 
     --card: 0 0% 100%;
@@ -21,13 +21,13 @@
     --primary: 228 74% 42%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 228 100% 97%;
+    --secondary: 0 0% 98%;
     --secondary-foreground: 228 70% 18%;
 
     --muted: 220 14% 96%;
-    --muted-foreground: 220 9% 46%;
+    --muted-foreground: 220 10% 42%;
 
-    --accent: 43 93% 67%;
+    --accent: 43 82% 60%;
     --accent-foreground: 228 70% 18%;
 
     --destructive: 0 84.2% 60.2%;
@@ -40,11 +40,14 @@
     --radius: 0.5rem;
 
     /* Gold tokens */
-    --gold: 43 93% 67%;
+    --gold: 43 82% 60%;
     --gold-dim: 43 70% 43%;
     --gold-deep: 43 80% 31%;
-    --gold-light: 43 90% 90%;
-    --gold-100: 43 100% 95%;
+    --gold-light: 43 85% 90%;
+    --gold-100: 43 90% 95%;
+
+    /* Button blue (Blue 600) */
+    --button-blue: 228 65% 53%;
 
     /* Blue scale tokens */
     --blue-900: 228 70% 18%;
@@ -141,29 +144,3 @@
   }
 }
 
-/* Float animation */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-/* Gold wave background animation */
-@keyframes goldFlow {
-  0% {
-    transform: scale(1) translateY(0px) translateX(0px);
-  }
-  50% {
-    transform: scale(1.03) translateY(-10px) translateX(6px);
-  }
-  100% {
-    transform: scale(1.05) translateY(10px) translateX(-6px);
-  }
-}
-
-.gold-wave-bg {
-  animation: goldFlow 18s ease-in-out infinite alternate;
-}

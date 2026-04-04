@@ -112,7 +112,10 @@ const ContactSection = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="inline-flex items-center gap-3 bg-accent text-accent-foreground px-8 py-3.5 text-sm font-bold rounded-xl hover:bg-accent/90 transition-all hover:-translate-y-0.5 disabled:opacity-50 shadow-[0_10px_18px_rgba(214,169,53,0.2)]"
+            className="inline-flex items-center gap-3 px-8 py-3.5 text-sm font-bold rounded-xl text-white transition-all hover:-translate-y-0.5 disabled:opacity-50 shadow-[0_10px_18px_rgba(53,88,216,0.22)]"
+            style={{ backgroundColor: "hsl(228 65% 53%)" }}
+            onMouseEnter={e => (e.currentTarget.style.backgroundColor = "hsl(228 74% 42%)")}
+            onMouseLeave={e => (e.currentTarget.style.backgroundColor = "hsl(228 65% 53%)")}
           >
             {isSubmitting ? "Sending..." : "Send Message"} <ArrowRight size={16} />
           </button>
@@ -121,7 +124,7 @@ const ContactSection = () => {
         <div className="mt-8 text-center text-sm text-muted-foreground space-y-1">
           <p><span className="text-foreground font-bold">Email:</span> info@aainnovation.com</p>
           <p><span className="text-foreground font-bold">Phone:</span> +1 (321) 477-9875</p>
-          <p><span className="text-foreground font-bold">Web:</span> www.aainnovation.com</p>
+          
         </div>
       </div>
     </section>

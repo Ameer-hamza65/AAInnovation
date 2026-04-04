@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowRight, Bot, BarChart3, Cloud, Shield } from "lucide-rea
 import { Link, useParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import goldWaveBg from "@/assets/gold-wave-background.png";
+import goldWaveBottom from "@/assets/gold-wave-bottom.png";
 
 const serviceData: Record<string, {
   icon: typeof Bot; title: string; tagline: string; description: string;
@@ -49,7 +49,7 @@ const ServiceDetail = () => {
 
   if (!service) {
     return (
-      <div className="relative min-h-screen bg-gradient-to-b from-white to-secondary">
+      <div className="relative min-h-screen bg-white">
         <div className="relative z-10">
           <Navbar />
           <div className="pt-28 pb-16 text-center">
@@ -69,8 +69,11 @@ const ServiceDetail = () => {
   const Icon = service.icon;
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-white to-secondary">
-      <div className="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-[0.15] pointer-events-none gold-wave-bg" style={{ backgroundImage: `url(${goldWaveBg})` }} />
+    <div className="relative min-h-screen bg-white">
+      <div
+        className="fixed bottom-0 left-0 right-0 h-[260px] md:h-[340px] pointer-events-none opacity-40 z-0"
+        style={{ backgroundImage: `url(${goldWaveBottom})`, backgroundSize: '100% 100%', backgroundPosition: 'bottom center', backgroundRepeat: 'no-repeat' }}
+      />
       <div className="relative z-10">
         <Navbar />
 
@@ -81,8 +84,8 @@ const ServiceDetail = () => {
                 <ArrowLeft size={16} /> Back to Services
               </Link>
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-14 h-14 rounded-[14px] flex items-center justify-center" style={{ background: "linear-gradient(135deg, hsl(43 90% 90%), hsl(43 100% 95%))", border: "1px solid hsl(43 70% 43% / 0.18)" }}>
-                  <Icon size={28} className="text-gold-deep" />
+                <div className="w-14 h-14 rounded-[14px] flex items-center justify-center bg-primary/5 border border-primary/10">
+                  <Icon size={28} className="text-primary" />
                 </div>
                 <h1 className="text-4xl md:text-5xl font-heading font-extrabold text-foreground">{service.title}</h1>
               </div>
