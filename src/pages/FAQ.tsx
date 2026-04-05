@@ -7,7 +7,7 @@ import goldWaveBottom from "@/assets/gold-wave-bottom.png";
 
 const faqs = [
   { q: "What services does AA Innovation offer?", a: "We offer AI & Machine Learning, Cloud Solutions, Cybersecurity, Data Analytics, Digital Transformation, IT Consulting, and Custom Software Development. Each service is tailored to your organization's specific needs." },
-  { q: "How do I get started with AA Innovation?", a: "Simply reach out via our Contact Us form or email us at info@aainnovation.com. We'll schedule a free consultation to understand your requirements and propose a tailored solution." },
+  { q: "How do I get started with AA Innovation?", a: "Simply reach out via our Contact Us form or email us at info@aainnovation.ai. We'll schedule a free consultation to understand your requirements and propose a tailored solution." },
   { q: "What industries do you serve?", a: "We serve Healthcare, Finance & Banking, Retail & E-Commerce, Manufacturing, Education, Government, and more. Our solutions are adaptable to any industry's unique challenges." },
   { q: "How long does a typical project take?", a: "Project timelines vary based on scope and complexity. A small automation project may take 4–6 weeks, while a full digital transformation can span 3–6 months. We provide detailed timelines during the proposal phase." },
   { q: "Do you offer ongoing support after project delivery?", a: "Yes. We provide post-launch support, maintenance, and optimization services to ensure your solution continues to perform at its best. Support plans are flexible and can be customized." },
@@ -22,8 +22,8 @@ const FAQ = () => {
   return (
     <div className="relative min-h-screen bg-white">
       <div
-        className="fixed bottom-0 left-0 right-0 h-[260px] md:h-[340px] pointer-events-none opacity-70 z-0"
-        style={{ backgroundImage: `url(${goldWaveBottom})`, backgroundSize: '100% 100%', backgroundPosition: 'bottom center', backgroundRepeat: 'no-repeat' }}
+className="fixed bottom-0 left-0 right-0 h-[350px] md:h-[500px] pointer-events-none opacity-70 z-0"
+        style={{ backgroundImage: `url(${goldWaveBottom})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
       />
       <div className="relative z-10">
         <Navbar onContactClick={() => setContactModalOpen(true)} />

@@ -122,8 +122,8 @@ const ContactSection = () => {
         </motion.form>
 
         <div className="mt-8 text-center text-sm text-muted-foreground space-y-1">
-          <p><span className="text-foreground font-bold">Email:</span> info@aainnovation.com</p>
-          <p><span className="text-foreground font-bold">Phone:</span> +1 (321) 477-9875</p>
+          <p><span className="text-foreground font-bold">Email:</span> info@aainnovation.ai</p>
+          <p><span className="text-foreground font-bold">Phone:</span> +1 (786) 495-7725</p>
           
         </div>
       </div>
