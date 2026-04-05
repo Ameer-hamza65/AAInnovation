@@ -1,4 +1,4 @@
-import { Linkedin, Twitter, Mail, Facebook, Instagram } from "lucide-react";
+import { Linkedin, Twitter, Mail, Facebook, Instagram, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import Logo from "@/components/Logo";
 
@@ -13,64 +13,85 @@ const Footer = () => {
   };
 
   return (
-    <footer className="border-t border-border py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
+    <footer className="relative overflow-hidden" style={{ background: "linear-gradient(135deg, hsl(228 65% 20%), hsl(228 65% 35%), hsl(228 65% 28%))" }}>
+      {/* Decorative elements */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute top-[-200px] right-[-100px] w-[400px] h-[400px] rounded-full opacity-10" style={{ background: "radial-gradient(circle, hsl(45 90% 65%), transparent 70%)" }} />
+      <div className="absolute bottom-[-150px] left-[-80px] w-[300px] h-[300px] rounded-full opacity-[0.07]" style={{ background: "radial-gradient(circle, hsl(228 65% 60%), transparent 70%)" }} />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-16 pb-8">
+        {/* CTA Banner */}
+        <div className="mb-16 p-8 md:p-10 rounded-2xl border border-white/10 bg-white/[0.06] backdrop-blur-sm flex flex-col md:flex-row items-center justify-between gap-6">
+          <div>
+            <h3 className="text-white font-heading font-bold text-xl md:text-2xl mb-2">Ready to innovate?</h3>
+            <p className="text-white/60 text-sm max-w-md">Let's discuss how we can transform your business with cutting-edge technology solutions.</p>
+          </div>
+          <button
+            onClick={() => scrollTo("#contact")}
+            className="inline-flex items-center gap-2 px-7 py-3 text-sm font-bold rounded-xl text-white border-2 border-white/20 hover:border-white/40 hover:bg-white/10 transition-all duration-300 whitespace-nowrap"
+          >
+            Get in Touch
+            <ArrowRight size={16} />
+          </button>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div className="md:col-span-1">
             <div className="mb-4">
-              <Logo size="sm" />
+              <Logo size="sm" variant="light" />
             </div>
-            <p className="text-muted-foreground text-sm leading-relaxed max-w-sm mb-6">
+            <p className="text-white/50 text-sm leading-relaxed max-w-sm mb-6">
               Empowering organizations through innovative technology solutions.
             </p>
-            <p className="text-muted-foreground text-sm mb-4">info@aainnovation.ai</p>
-            <div className="flex gap-4">
+            <p className="text-white/60 text-sm mb-2">info@aainnovation.ai</p>
+            <p className="text-white/60 text-sm mb-5">+1 (786) 495-7725</p>
+            <div className="flex gap-3">
               {[Linkedin, Twitter, Facebook, Instagram, Mail].map((Icon, i) => (
-                <a key={i} href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  <Icon size={18} />
+                <a key={i} href="#" className="w-9 h-9 rounded-lg bg-white/[0.08] hover:bg-white/[0.15] flex items-center justify-center text-white/60 hover:text-white transition-all duration-300">
+                  <Icon size={16} />
                 </a>
               ))}
             </div>
           </div>
 
           <div>
-            <h4 className="text-foreground font-heading font-bold text-sm mb-4">Navigation</h4>
+            <h4 className="text-white font-heading font-bold text-sm mb-5 tracking-wide uppercase">Navigation</h4>
             <ul className="space-y-3">
-              <li><Link to="/" className="text-muted-foreground text-sm hover:text-primary transition-colors">Home</Link></li>
-              <li><button onClick={() => scrollTo("#about")} className="text-muted-foreground text-sm hover:text-primary transition-colors">About Us</button></li>
-              <li><button onClick={() => scrollTo("#services")} className="text-muted-foreground text-sm hover:text-primary transition-colors">Services</button></li>
-              <li><button onClick={() => scrollTo("#industries")} className="text-muted-foreground text-sm hover:text-primary transition-colors">Industries</button></li>
-              <li><button onClick={() => scrollTo("#contact")} className="text-muted-foreground text-sm hover:text-primary transition-colors">Contact Us</button></li>
-              <li><Link to="/faq" className="text-muted-foreground text-sm hover:text-primary transition-colors">FAQ</Link></li>
+              <li><Link to="/" className="text-white/50 text-sm hover:text-white transition-colors duration-200">Home</Link></li>
+              <li><button onClick={() => scrollTo("#about")} className="text-white/50 text-sm hover:text-white transition-colors duration-200">About Us</button></li>
+              <li><button onClick={() => scrollTo("#services")} className="text-white/50 text-sm hover:text-white transition-colors duration-200">Services</button></li>
+              <li><button onClick={() => scrollTo("#industries")} className="text-white/50 text-sm hover:text-white transition-colors duration-200">Industries</button></li>
+              <li><button onClick={() => scrollTo("#contact")} className="text-white/50 text-sm hover:text-white transition-colors duration-200">Contact Us</button></li>
+              <li><Link to="/faq" className="text-white/50 text-sm hover:text-white transition-colors duration-200">FAQ</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-foreground font-heading font-bold text-sm mb-4">Services</h4>
+            <h4 className="text-white font-heading font-bold text-sm mb-5 tracking-wide uppercase">Services</h4>
             <ul className="space-y-3">
-              <li><Link to="/services/ai-automation" className="text-muted-foreground text-sm hover:text-primary transition-colors">AI & Automation</Link></li>
-              <li><Link to="/services/data-analytics" className="text-muted-foreground text-sm hover:text-primary transition-colors">Data Analytics</Link></li>
-              <li><Link to="/services/cloud-solutions" className="text-muted-foreground text-sm hover:text-primary transition-colors">Cloud Solutions</Link></li>
-              <li><Link to="/services/cybersecurity" className="text-muted-foreground text-sm hover:text-primary transition-colors">Cybersecurity</Link></li>
+              <li><Link to="/services/ai-automation" className="text-white/50 text-sm hover:text-white transition-colors duration-200">AI & Automation</Link></li>
+              <li><Link to="/services/data-analytics" className="text-white/50 text-sm hover:text-white transition-colors duration-200">Data Analytics</Link></li>
+              <li><Link to="/services/cloud-solutions" className="text-white/50 text-sm hover:text-white transition-colors duration-200">Cloud Solutions</Link></li>
+              <li><Link to="/services/cybersecurity" className="text-white/50 text-sm hover:text-white transition-colors duration-200">Cybersecurity</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-foreground font-heading font-bold text-sm mb-4">Company</h4>
+            <h4 className="text-white font-heading font-bold text-sm mb-5 tracking-wide uppercase">Company</h4>
             <ul className="space-y-3">
-              <li><Link to="/about" className="text-muted-foreground text-sm hover:text-primary transition-colors">About Us</Link></li>
-              <li><Link to="/faq" className="text-muted-foreground text-sm hover:text-primary transition-colors">FAQ</Link></li>
-              <li><button onClick={() => scrollTo("#contact")} className="text-muted-foreground text-sm hover:text-primary transition-colors">Contact</button></li>
-              <li><Link to="/login" className="text-muted-foreground text-sm hover:text-primary transition-colors">Login</Link></li>
+              <li><Link to="/about" className="text-white/50 text-sm hover:text-white transition-colors duration-200">About Us</Link></li>
+              <li><Link to="/faq" className="text-white/50 text-sm hover:text-white transition-colors duration-200">FAQ</Link></li>
+              <li><button onClick={() => scrollTo("#contact")} className="text-white/50 text-sm hover:text-white transition-colors duration-200">Contact</button></li>
+              <li><Link to="/login" className="text-white/50 text-sm hover:text-white transition-colors duration-200">Login</Link></li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-muted-foreground text-xs">© 2026 AA Innovation LLC. All rights reserved.</p>
+        <div className="mt-14 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-white/30 text-xs">© 2026 AA Innovation LLC. All rights reserved.</p>
           <div className="flex gap-6">
             {["Privacy Policy", "Terms of Service", "Cookies"].map((link) => (
-              <a key={link} href="#" className="text-muted-foreground text-xs hover:text-primary transition-colors">{link}</a>
+              <a key={link} href="#" className="text-white/30 text-xs hover:text-white/60 transition-colors duration-200">{link}</a>
             ))}
           </div>
         </div>
