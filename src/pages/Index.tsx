@@ -8,6 +8,7 @@ import IndustriesSection from "@/components/IndustriesSection";
 import StatsSection from "@/components/StatsSection";
 import WhyUsSection from "@/components/WhyUsSection";
 import ContactSection from "@/components/ContactSection";
+import CTABanner from "@/components/CTABanner";
 import ContactFormModal from "@/components/ContactFormModal";
 import Footer from "@/components/Footer";
 import goldWaveBottom from "@/assets/gold-wave-bottom.png";
@@ -33,8 +34,8 @@ const Index = () => {
     <div className="relative min-h-screen bg-white">
       {/* Golden wave at bottom */}
       <div
-        className="fixed bottom-0 left-0 right-0 h-[260px] md:h-[340px] pointer-events-none opacity-70 z-0"
-        style={{ backgroundImage: `url(${goldWaveBottom})`, backgroundSize: '100% 100%', backgroundPosition: 'bottom center', backgroundRepeat: 'no-repeat' }}
+className="fixed bottom-0 left-0 right-0 h-[350px] md:h-[500px] pointer-events-none opacity-70 z-0"
+        style={{ backgroundImage: `url(${goldWaveBottom})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
       />
       <div className="relative z-10">
         <Navbar />
@@ -45,6 +46,7 @@ const Index = () => {
         <StatsSection />
         <WhyUsSection />
         <ContactSection />
+        <CTABanner />
         <Footer />
       </div>
       <ContactFormModal open={contactModalOpen} onOpenChange={setContactModalOpen} />

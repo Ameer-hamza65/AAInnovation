@@ -1,4 +1,4 @@
-import { Linkedin, Twitter, Mail, Facebook, Instagram, ArrowRight } from "lucide-react";
+import { Linkedin, Twitter, Mail, Facebook, Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
 import Logo from "@/components/Logo";
 
@@ -20,21 +20,6 @@ const Footer = () => {
       <div className="absolute bottom-[-150px] left-[-80px] w-[300px] h-[300px] rounded-full opacity-[0.07]" style={{ background: "radial-gradient(circle, hsl(228 65% 60%), transparent 70%)" }} />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-16 pb-8">
-        {/* CTA Banner */}
-        <div className="mb-16 p-8 md:p-10 rounded-2xl border border-white/10 bg-white/[0.06] backdrop-blur-sm flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <h3 className="text-white font-heading font-bold text-xl md:text-2xl mb-2">Ready to innovate?</h3>
-            <p className="text-white/60 text-sm max-w-md">Let's discuss how we can transform your business with cutting-edge technology solutions.</p>
-          </div>
-          <button
-            onClick={() => scrollTo("#contact")}
-            className="inline-flex items-center gap-2 px-7 py-3 text-sm font-bold rounded-xl text-white border-2 border-white/20 hover:border-white/40 hover:bg-white/10 transition-all duration-300 whitespace-nowrap"
-          >
-            Get in Touch
-            <ArrowRight size={16} />
-          </button>
-        </div>
-
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div className="md:col-span-1">
             <div className="mb-4">
