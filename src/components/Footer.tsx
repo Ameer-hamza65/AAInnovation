@@ -23,7 +23,7 @@ const Footer = () => {
             <p className="text-muted-foreground text-sm leading-relaxed max-w-sm mb-6">
               Empowering organizations through innovative technology solutions.
             </p>
-            <p className="text-muted-foreground text-sm mb-4">info@aainnovation.com</p>
+            <p className="text-muted-foreground text-sm mb-4">info@aainnovation.ai</p>
             <div className="flex gap-4">
               {[Linkedin, Twitter, Facebook, Instagram, Mail].map((Icon, i) => (
                 <a key={i} href="#" className="text-muted-foreground hover:text-primary transition-colors">
